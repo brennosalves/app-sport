@@ -47,8 +47,8 @@ The application follows a modular architecture with a clear separation between t
 ### Prerequisites
 
 -   [Node.js (>= 18.0)](https://nodejs.org/en/download)
--   npm or yarn
--   Git
+-   npm
+-   [Git](https://git-scm.com/downloads)
 
 ### Installation
 

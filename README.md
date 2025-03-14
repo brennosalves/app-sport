@@ -63,9 +63,9 @@ The application follows a modular architecture with a clear separation between t
 
     ```bash
     cd backend
-    npm install # or yarn install
+    npm install
     cd ../frontend
-    npm install # or yarn install
+    npm install 
     cd ..
     ```
 
@@ -75,14 +75,15 @@ The application follows a modular architecture with a clear separation between t
 
     ```bash
     cd backend
-    npm run start:dev # or yarn start:dev
+    npm run start
     ```
 
 2.  Start the frontend:
 
     ```bash
     cd ../frontend
-    npm run start # or yarn start
+    npm run build
+    npm run start
     ```
 
     The application will be available at `http://localhost:3000`.
@@ -103,14 +104,14 @@ To run tests for both the backend and frontend:
 
     ```bash
     cd backend
-    npm run test # or yarn test
+    npm run test
     ```
 
 -   **Frontend Tests:**
 
     ```bash
     cd ../frontend
-    npm run test # or yarn test
+    npm run test
     ```
 
 

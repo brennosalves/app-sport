@@ -34,16 +34,12 @@ Follow these steps to set up and run the backend API:
 
     ```bash
     npm install
-    # or
-    yarn install
     ```
 
 4.  **Run the application:**
 
     ```bash
-    npm run start:dev
-    # or
-    yarn start:dev
+    npm run start
     ```
 
     The API will be available at `http://localhost:5010`.

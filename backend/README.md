@@ -1,98 +1,97 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Backend API for Sport's Team League Management
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This document provides information about the backend API built with NestJS for managing teams in a league.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Architecture Overview
 
-## Description
+The backend is built using [NestJS](https://docs.nestjs.com/), a progressive [Node.js](https://nodejs.org/en) framework for building efficient and scalable server-side applications. The core functionality revolves around the `TeamsService`, which handles the retrieval, creation, updating, and deletion of team data.  
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Project setup
+Key features:
 
-```bash
-$ npm install
-```
+-   **Data Fetching:** Upon the first request for the list of teams, the application fetches team data from the [TheSportsDB API](https://www.thesportsdb.com/api.php). This data is then stored locally in an in-memory array.
+-   **CRUD Operations:** The API supports Create, Read, Update, and Delete (CRUD) operations for managing team data.
+-   **Validation:** Input validation is implemented to ensure data integrity, including checks for existing teams and required fields.
+-   **Error Handling:** Robust error handling is incorporated to provide informative responses for invalid requests and API fetch failures.
+-   **In-Memory Data Storage:** The fetched team data is stored in an in-memory array for simplicity. For production, a persistent database should be used.
 
-## Compile and run the project
+## Setup and Installation
 
-```bash
-# development
-$ npm run start
+Follow these steps to set up and run the backend API:
 
-# watch mode
-$ npm run start:dev
+1.  **Prerequisites:**
+    -   [Node.js (>= 18.0)]((https://nodejs.org/en/download))
+    -   npm or yarn
 
-# production mode
-$ npm run start:prod
-```
+2.  **Clone the repository:**
 
-## Run tests
+    ```bash
+    git clone https://github.com/brennosalves/app-sport.git
+    cd backend
+    ```
 
-```bash
-# unit tests
-$ npm run test
+3.  **Install dependencies:**
 
-# e2e tests
-$ npm run test:e2e
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-# test coverage
-$ npm run test:cov
-```
+4.  **Run the application:**
 
-## Deployment
+    ```bash
+    npm run start:dev
+    # or
+    yarn start:dev
+    ```
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+    The API will be available at `http://localhost:5010`.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## API Endpoints
+
+-   **GET /teams:** Retrieves the list of teams.
+-   **POST /teams:** Creates a new team.
+-   **PUT /teams/:id:** Updates an existing team.
+-   **DELETE /teams/:id:** Deletes a team.
+
+Examples were added to an Insomnia file in the root directory and also on a a requests.http file. You can import the insomnia file or use the [Rest extension](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) of [Visual Studio Code](https://code.visualstudio.com/) to call the API.
+
+## Running Tests
+
+To run the unit tests for the backend:
 
 ```bash
-$ npm install -g mau
-$ mau deploy
-```
+npm run test
+# or
+yarn test
+````
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Tests results should look like this:
+![Image](https://github.com/user-attachments/assets/c7c1a38c-9db5-4916-a215-1747754c831e)
 
-## Resources
+## Migration Approach from Rails to NestJS
 
-Check out a few resources that may come in handy when working with NestJS:
+This project represents a conceptual migration from a potential Rails backend to NestJS. The focus was on replicating the core data management logic.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+-   **Rails to NestJS:** The transition involves moving from Ruby on Rails' ActiveRecord patterns to NestJS's modular service-based architecture.
+-   **Data Storage:** Due to the project's requirements, a simple in-memory array will be used to store the data during development. In a production environment, a database would be utilized to persist the data.
+-   **API Design:** The REST API structure is implemented using controller-based routing with NestJS.
+-   **Validation and Error Handling:** NestJS's built-in validation and exception filters are used to achieve validation and error handling capabilities.
 
-## Support
+## Design Patterns and Reasoning
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+-   **Service Layer:** The `TeamsService` implements the service layer pattern, encapsulating business logic and data access. This promotes separation of concerns and testability.
+-   **Dependency Injection:** NestJS's dependency injection system is used to manage dependencies between modules, enhancing modularity and testability.
+-   **DTOs (Data Transfer Objects):** DTOs (`CreateTeamDto`, `UpdateTeamDto`) are used to define the structure of data being transferred between the client and server. This enforces data consistency and provides type safety.
+-   **Exception Filters:** NestJS's exception filters are used to handle errors and provide consistent error responses to the client.
+-   **In-Memory Data Storage (Temporary):** For this project's scope, an in-memory array simplifies data management. In a production environment, a database like [PostgreSQL](https://www.postgresql.org/) or [MySQL](https://www.mysql.com/) would be used.
+-   **Fetch API:** The node fetch API is used to retrieve data from the external API.
 
-## Stay in touch
+## Future Improvements
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+-   **Database Integration:** Replace the in-memory array with a persistent database.
+-   **Enhanced Validation:** Implement more comprehensive validation rules.
+-   **Authentication and Authorization:** Add security measures to protect the API.
+-   **API Documentation:** Generate API documentation using Swagger or OpenAPI.
+-   **Caching:** Implement caching for the external API data to improve performance.

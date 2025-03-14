@@ -26,7 +26,7 @@ Follow these steps to set up and run the frontend application:
 
 1.  **Prerequisites:**
     -   [Node.js (>= 18.0)](https://nodejs.org/en/download)
-    -   npm or yarn
+    -   npm
 
 2.  **Clone the repository:**
 
@@ -39,16 +39,13 @@ Follow these steps to set up and run the frontend application:
 
     ```bash
     npm install
-    # or
-    yarn install
     ```
 
 4.  **Run the application:**
 
     ```bash
+    npm run build
     npm run start
-    # or
-    yarn start
     ```
 
     The application will be available at `http://localhost:3000`.
